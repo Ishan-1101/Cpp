@@ -39,7 +39,8 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "valarray": "cpp"
     },
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#9b183c",
