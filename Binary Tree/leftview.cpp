@@ -34,6 +34,7 @@ void leftView(node *root)
         }
     }
 }
+
 int main()
 {
     node *root = new node(1);
