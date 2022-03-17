@@ -1,34 +1,33 @@
+//ORDERED SET
+
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
 using namespace std;
 using namespace __gnu_pbds;
+const int N=1e5+10;
 
 typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> pbds;
- 
+
 int main()
 {
-   pbds A;
-   //insert
-   cout<<"A contains : ";
-   A.insert(1);
-   A.insert(2);
-   A.insert(4);
-   A.insert(7);
-   A.insert(2);
-   A.insert(5);
-   A.insert(11);
-   A.insert(10);
-   for(auto a:A)
-   cout<<a<< " ";
-   cout<<endl;
-   //remove
-   A.erase(1);cout<<"A contains : ";
-   for(auto a:A)
-   cout<<a<< " ";
-   cout<<endl;
-   //Kth element
-   cout<<"4th element in A is : "<<*A.find_by_order(4)<< endl;
-   //Smaller elements than X
-   cout<<"No. of elements smaller than 10 is : "<<A.order_of_key(10)<<endl;
+  pbds cake;
+  cout<<"Cake contains : ";
+   cake.insert(1);
+   cake.insert(2);
+   cake.insert(10);
+   cake.insert(7);
+   cake.insert(2);
+   for(auto s:cake){
+      cout<<s<<" ";
+   }
+   cake.erase(2);
+   for(auto s:cake){
+      cout<<s<<" ";
+   }
+
+   cout<<"\n No. of elements smaller than 7 are : "<<cake.order_of_key(7)<<endl;
+
+   cout<<"\n Element at index 2 : "<<*cake.find_by_order(2)<<endl;
+
 }
