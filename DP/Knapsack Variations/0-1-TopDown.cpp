@@ -6,6 +6,7 @@ int static dp[102][1002];
 
 int solve(int wt[], int val[], int W, int n)
 {
+    if(n==0||W==0) return 0;
     for (int i = 1; i < n + 1; i++)
         for (int j = 1; j < W + 1; j++)
         {
