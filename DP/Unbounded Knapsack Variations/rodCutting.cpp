@@ -25,6 +25,6 @@ int main()
         cout << "Enter the price of part #" << i + 1 << endl;
         cin >> price[i];
     }
-    cout << profit(N, len, price) << endl;
+    // cout << profit(N, len, price) << endl;
     return 0;
 }
