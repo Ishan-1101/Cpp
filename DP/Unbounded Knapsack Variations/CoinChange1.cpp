@@ -21,11 +21,14 @@ int solve(int n, int sum, vector<int> coin)
         return 0;
     if (sum == 0)
         return 1;
+    // memoize
+    if (dp[n][sum] != -1)
+        return dp[n][sum];
     // choice diagram
     if (coin[n - 1] <= sum)
-        return solve(n, sum - coin[n - 1], coin) + solve(n - 1, sum, coin);
+        return dp[n][sum]=solve(n, sum - coin[n - 1], coin) + solve(n - 1, sum, coin);
     else if (coin[n - 1] > sum)
-        return solve(n - 1, sum, coin);
+        return dp[n][sum]=solve(n - 1, sum, coin);
 }
 
 int main()
@@ -35,9 +38,18 @@ int main()
     cin >> n >> sum;
     vector<int> coin(n);
     dp[n + 1][sum + 1];
+    // for(int i = 0; i < n; i++)
+    // for(int j = 0; j < sum; j++){
+    //     if(i == 0)
+    //     dp[i][j]=0;
+    //     if(j == 0)
+    //     dp[i][j]=1;
+    // }
+    // dp[0][0]=1;
+    memset(dp, -1, sizeof(dp));
     cout << "Enter value of each coin\n";
     for (int i = 0; i < n; i++)
         cin >> coin[i];
-    cout << solve(n, sum, coin) << endl;
+    cout << "Max ways: " << solve(n, sum, coin) << endl;
     return 0;
 }
