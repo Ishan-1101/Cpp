@@ -3,6 +3,7 @@ using namespace std;
 const int N = 1e5 + 5;
 vector<vector<int>> tree(N);
 vector<bool> visit(N);
+
 void dfs(int node)
 {
     visit[node] = true;
@@ -15,6 +16,7 @@ void dfs(int node)
         }
     }
 }
+
 int main()
 {
     int nodes;
