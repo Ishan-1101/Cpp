@@ -1,11 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define pb push_back
-typedef vector<int> vi;
-typedef unordered_map<int, int> ump;
 const int N= 1e3+10 ;
+
 int graph1[N][N];    //Space complexity O(N^2)......N!=10^5 ....N<=10^3 or 10^4
-vi graph2[N];        //Space complexity O(N+M)......M<10^7
+vector<int> graph2[N];        //Space complexity O(N+M)......M<10^7
+
 int32_t main()
 {
    int n,m;
