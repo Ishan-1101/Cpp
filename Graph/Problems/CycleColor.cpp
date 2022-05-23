@@ -24,13 +24,12 @@ public:
     {
         adj[v].push_back(w); // Add w to v's list.
     }
-    
+
     bool DFSUtil(int u, int color[])
     {
         color[u] = GRAY;
-
-        // Iterate through all adjacent vertices
-        list<int>::iterator i;
+        
+        list<int>::iterator i; // Iterate through all adjacent vertices
         for (i = adj[u].begin(); i != adj[u].end(); ++i)
         {
             int v = *i; // An adjacent of u
@@ -53,14 +52,11 @@ public:
 
     bool isCyclic()
     {
-        // Initialize color of all vertices as WHITE
         int *color = new int[V];
         for (int i = 0; i < V; i++)
-            color[i] = WHITE;
+            color[i] = WHITE; // Initialize color of all vertices as WHITE
 
-        // Do a DFS traversal beginning with all
-        // vertices
-        for (int i = 0; i < V; i++)
+        for (int i = 0; i < V; i++) // DFS traversal beginning with all vertices
             if (color[i] == WHITE)
                 if (DFSUtil(i, color) == true)
                     return true;
