@@ -13,11 +13,15 @@ right child->i*2+1
 
 INSERT:
 1)Insert at last index.
-2)Swap if the parent is smaller
+2)Swap if the parent is smaller.
 
 HEAPIFY: conveting into a heap
-1) no need to process leaf nodes, they are alrady in correct place
-2) compare node with its children and swap
+1) no need to process leaf nodes, they are alrady in correct place.
+2) compare node with its children and swap.
+
+HEAP SORT: O(nlogn)
+1)Swap a[1] with a[n].
+2)root node -> correct position (heapify).
 */
 
 #include <bits/stdc++.h>
@@ -38,15 +42,34 @@ void heapify(int arr[], int n, int i)
         heapify(arr, n, largest);
     }
 }
-
-int main()
+void buildheap(int arr[], int n)
 {
-    int arr[6] = {-1, 54, 53, 40, 55, 60};
-    int n = 5;
     for (int i = n / 2; i > 0; i--)
         heapify(arr, n, i);
+}
+void heapsort(int arr[], int n)
+{
+    for (int i = n; i > 0; i--)
+    {
+        swap(arr[1], arr[i]);
+        heapify(arr, i - 1, 1);
+    }
+}
+int main()
+{
+    int arr[8] = {-1, 54, 53, 40, 55, 10, 83, 77};
+    int n = 7;
+    cout<<"\noriginal array: \n";
     for (int i = 1; i <= n; i++)
         cout << arr[i] << " ";
-
+    buildheap(arr, n);
+    cout << "\nheap before sorting: \n";
+    for (int i = 1; i <= n; i++)
+        cout << arr[i] << " ";
+    cout << "\nheap after sorting: \n";
+    heapsort(arr, n);
+    for (int i = 1; i <= n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
     return 0;
 }
