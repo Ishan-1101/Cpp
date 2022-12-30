@@ -1,3 +1,13 @@
+/*
+    Trie is also very useful when working with prefixes. Because words with the same prefixes share nodes and edges in the trie, we can efficiently answer the following questions with the trie (perhaps with some modifications):
+
+    Are there any words in the trie that start with the prefix P?
+    How many words in the trie start with the prefix P?
+    What are all the words in the trie that start with the prefix P?
+
+    Because of this, data structures similar to a trie are used in many real-life applications. Google search autocomplete is a great example of this. When you type the beginning of your search query, it looks for the possible ways to continue it that start with the typed prefix:
+*/
+
 #include<iostream>
 using namespace std;
 
@@ -68,5 +78,17 @@ class Trie {
             }
             return true;
         }
+
+        // int count_words_equal_to(string x) {
+
+        // }
+
+        // int count_words_starting_with(string prefix) {
+
+        // }
+
+        // void erase(string word) {
+
+        // }
 
 };
