@@ -1,8 +1,6 @@
-//construct Balanced Binary Search Tree from a sorted array 
 #include<bits/stdc++.h>
 using namespace std;
 
-/* A Binary Tree node */
 class TNode
 {
 	public:
@@ -14,34 +12,20 @@ class TNode
 TNode* newNode(int data);
 
 
-TNode* sortedArrayToBST(int arr[],
-						int start, int end)
-{
-	/* Base Case */
+TNode* sortedArrayToBST(int arr[], int start, int end){
 	if (start > end)
 	return NULL;
 
-	/* Get the middle element and make it root */
 	int mid = (start + end)/2;
 	TNode *root = newNode(arr[mid]);
 
-	/* Recursively construct the left subtree
-	and make it left child of root */
-	root->left = sortedArrayToBST(arr, start,
-									mid - 1);
-
-	/* Recursively construct the right subtree
-	and make it right child of root */
+	root->left = sortedArrayToBST(arr, start, mid - 1);
 	root->right = sortedArrayToBST(arr, mid + 1, end);
 
 	return root;
 }
 
-/* Helper function that allocates a new node
-with the given data and NULL left and right
-pointers. */
-TNode* newNode(int data)
-{
+TNode* newNode(int data){
 	TNode* node = new TNode();
 	node->data = data;
 	node->left = NULL;
@@ -50,8 +34,6 @@ TNode* newNode(int data)
 	return node;
 }
 
-/* A utility function to print
-preorder traversal of BST */
 void preOrder(TNode* node)
 {
 	if (node == NULL)
@@ -61,7 +43,6 @@ void preOrder(TNode* node)
 	preOrder(node->right);
 }
 
-// Driver Code
 int main()
 {
 	int arr[] = {1, 2, 3, 4, 5, 6, 7};
