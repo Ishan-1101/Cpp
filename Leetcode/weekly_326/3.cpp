@@ -14,39 +14,19 @@ typedef unordered_map<int, int> ump;
 
 class Solution {
 public:
-    int minimumPartition(string a, int k) {
-        // string o = "";
-        // int ans = 0;
-        // for(auto g : s) {
-        //     o.push_back(g);
-        //     if(atol(o.c_str()) > k) {
-        //         o.clear();
-		// 		++ans;
-        //         o.push_back(g);
-        //     }
-        //     if(atol(o.c_str()) > k) return -1;
-        // }
-        // return ans+1;
-		long long num=0;
-        int ans=1;
-        int ma=0;
-        for(int i=0;i<a.size();i++)
-        {
-            ma=max(ma,a[i]-'0');
-            num=(num*10+a[i]-'0');
-            if(num>(long long)k)
-            {
-                ans++;
-                num=(a[i]-'0');
-                
+    int minimumPartition(string s, int k) {
+        string o = "";
+        int ans = 0;
+        for(auto g : s) {
+            o.push_back(g);
+            if(atol(o.c_str()) > k) {
+                o.clear();
+				++ans;
+                o.push_back(g);
             }
-            
+            if(atol(o.c_str()) > k) return -1;
         }
-        if(ma>k)
-        {
-            return -1;
-        }
-        return ans;
+        return ans+1;
     }
 };
 
