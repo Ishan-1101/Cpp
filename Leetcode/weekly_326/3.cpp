@@ -12,25 +12,41 @@ typedef map<int, int> mii;
 typedef unordered_map<int, int> ump;
 #define w(x)  int x; cin>>x; while(x--)
 
-
 class Solution {
 public:
-    int count_digits(int x) {
-        int ans = 0;
-        while(x) {
-            ans += 1;
-            x /= 10;
+    int minimumPartition(string a, int k) {
+        // string o = "";
+        // int ans = 0;
+        // for(auto g : s) {
+        //     o.push_back(g);
+        //     if(atol(o.c_str()) > k) {
+        //         o.clear();
+		// 		++ans;
+        //         o.push_back(g);
+        //     }
+        //     if(atol(o.c_str()) > k) return -1;
+        // }
+        // return ans+1;
+		long long num=0;
+        int ans=1;
+        int ma=0;
+        for(int i=0;i<a.size();i++)
+        {
+            ma=max(ma,a[i]-'0');
+            num=(num*10+a[i]-'0');
+            if(num>(long long)k)
+            {
+                ans++;
+                num=(a[i]-'0');
+                
+            }
+            
+        }
+        if(ma>k)
+        {
+            return -1;
         }
         return ans;
-    }
-    int minimumPartition(string s, int k) {
-        int n = s.length();
-        int ans = 0;
-        int num_digs = count_digits(k);
-        for(int i=0; i<n-num_digs; i+=1) {
-            // TO-DO
-        }
-        return 0;
     }
 };
 
