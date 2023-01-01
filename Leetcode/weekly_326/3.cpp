@@ -6,7 +6,7 @@ using namespace std;
 #define ss second
 #define f(n) for (int i = 0; i < n; i++)
 typedef vector<int> vi;
-typedef vector<string> vs;
+typedef vector<string> vs; 326
 typedef map<int, int> mii;
 typedef unordered_map<int, int> ump;
 
