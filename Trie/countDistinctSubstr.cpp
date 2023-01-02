@@ -47,6 +47,7 @@ struct Node
     }
 };
 
+// O(n^2)
 int countDistinctSubstrings(string &s)
 {
     Node *root = new Node();

@@ -35,7 +35,7 @@ struct Node {
     bool checkEnd() {
         return flag;
     }
-
+    
 };
 
 class Trie {
