@@ -1,33 +1,40 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+
 using namespace std;
-const int N = 1e5 + 10;
- 
-bool f(vector<int>& arr, int idx, int k) {
-    // base cases
-    if(k == 0)  return true;
-    if(idx == 0)    return arr[0] == k;
 
-    // explore possibilities
-    bool not_take = f(arr, idx - 1, k);
-    bool take = false;
-    if(arr[idx] <= k)   take = f(arr, idx - 1, k - arr[idx]);
+bool subsetSumUtil(int ind, int target, vector<int> &arr, vector<vector<int>> &dp)
+{
+    if (target == 0)
+        return true;
+    if (ind == 0)
+        return arr[0] == target;
+    if (dp[ind][target] != -1)
+        return dp[ind][target];
 
-    return take or not_take;
+    bool notTaken = subsetSumUtil(ind - 1, target, arr, dp);
+    bool taken = false;
+    if (arr[ind] <= target)
+        taken = subsetSumUtil(ind - 1, target - arr[ind], arr, dp);
+
+    return dp[ind][target] = notTaken || taken;
 }
 
-bool subset_sum_equal_to_k(vector<int>& arr, int k) {
-    int n = arr.size();
-    return f(arr, n - 1, k);
+bool subsetSumToK(int n, int k, vector<int> &arr)
+{
+    vector<vector<int>> dp(n, vector<int>(k + 1, -1));
+
+    return subsetSumUtil(n - 1, k, arr, dp);
 }
 
 int main()
 {
-    int n; cin >> n;
-    vector<int> arr(n);
-    for(int i = 0; i < n; i++)
-    cin >> arr[i];
-    int target; cin >> target;
-    bool ans = subset_sum_equal_to_k(arr, target);  
-    cout << ans;
-    return 1; 
+
+    vector<int> arr = {1, 2, 3, 4};
+    int k = 7;
+    int n = arr.size();
+
+    if (subsetSumToK(n, k, arr))
+        cout << "Subset with given target found";
+    else
+        cout << "Subset with given target not found";
 }
